@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello phaser!</title>
+        <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+        <style>
+            body { background: #0f0f10; }
+        </style>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
+        //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
+        //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
+        var screenHeight = 750;
+        var screenWidth = 1400;
+
+        var game = new Phaser.Game(screenWidth, screenHeight, Phaser.AUTO, '', { preload: preload, create: create });
+
+        function preload () {
+
+            game.load.image('logo', 'assets/images/GameGuru.jpg');
+            game.load.image('knight', 'assets/images/knight.png');
+            game.load.image('werewolf', 'assets/images/werewolf.png');
+
+        }
+
+        function create () {
+
+            var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+            var randomH = getRandomInt(screenHeight -100);
+            var randomW = getRandomInt(screenWidth - 300);
+            var knight = game.add.sprite(randomW -20, randomH -22, 'knight');
+            var knight = game.add.sprite(randomW -25, randomH, 'knight');
+            var knight = game.add.sprite(randomW, randomH, 'knight');
+            var werewolf = game.add.sprite(randomW + 25, randomH -25, 'werewolf');
+            logo.anchor.setTo(0.5, 0.5);
+
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+    };
+
+    </script>
+
+    </body>
+</html>
